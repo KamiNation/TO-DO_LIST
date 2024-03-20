@@ -19,21 +19,23 @@ button.addEventListener("click", () => {
     // console.log(newInput);
     // newInput.push(inputs.value);
     // console.log(newInput)
-    for (let i = 0; i < newInput.length; i++) {
-        if (inputs.value.length > 0) {
-            newInput.push(inputs.value);
-            inputs.value = '';
-        }
+    if (inputs.value.length > 0) {
+        newInput.push(inputs.value);
+        inputs.value = '';
+        displayCurrentTodo();
     }
-    displayCurrentTodo();
 });
 const displayCurrentTodo = () => {
     let listHtml = '';
     for (let i = 0; i < newInput.length; i++) {
-        listHtml += `<li> ${newInput[i]} <br> <button onclick="editMyTask(${i})">Edit</button> <button onclick="deleteMyTask(${i})">Completed</button></li>`;
+        listHtml += `<li> ${newInput[i]} <br>
+        <button onclick='editMyTask(${i})'>Edit</button> 
+        <button onclick='deleteMyTask(${i})'>Completed</button></li>`;
     }
     ;
-    ul.innerHTML += listHtml;
+    console.log(newInput);
+    console.log(listHtml);
+    ul.innerHTML = listHtml;
     // ul.innerHTML += `<li> ${newInput[i]} <br> <button>Edit</button> <button onclick="deleteTask(${i})">Completed</button></li>`
 };
 const deleteMyTask = (index) => {
